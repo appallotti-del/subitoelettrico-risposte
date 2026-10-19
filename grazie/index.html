@@ -10,7 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root { --bg:#F5F2EC; --ink:#1B1B1B; --accent:#D76A03; --muted:#5b5750; --line:#dcd6c8; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#F5F2EC; --ink:#1B1B1B; } }
   * { box-sizing: border-box; }
   html, body { margin:0; background:var(--bg); color:var(--ink); }
   body { font-family:'Inter',system-ui,sans-serif; font-size:17px; line-height:1.6; }
@@ -20,12 +19,9 @@
   h1 { font-family:'DM Serif Display',Georgia,serif; font-weight:400; font-size:38px; line-height:1.15; margin:0 0 20px; }
   p { margin:0 0 18px; }
   .echo { border-left:3px solid var(--accent); padding:2px 0 2px 14px; color:var(--muted); font-size:15px; margin:0 0 28px; display:none; }
-  button { font:inherit; font-weight:500; background:var(--accent); color:#fff; border:0; padding:14px 22px; border-radius:6px; cursor:pointer; }
-  button:hover { filter:brightness(.94); }
-  button:disabled { opacity:.55; cursor:default; }
+  .btn { display:inline-block; font:inherit; font-weight:500; background:var(--accent); color:#fff; text-decoration:none; padding:14px 22px; border-radius:6px; }
+  .btn:hover { filter:brightness(.94); }
   .note { font-size:14px; color:var(--muted); margin-top:14px; }
-  .status { margin-top:22px; padding:14px 16px; border:1px solid var(--line); border-radius:6px; display:none; font-size:16px; }
-  .status.ok { border-color:var(--accent); }
   footer { margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font-size:13px; color:var(--muted); }
   footer a { color:var(--muted); }
 </style>
@@ -35,63 +31,26 @@
   <div class="brand"><b>SubitoElettrico.it</b> - la voce editoriale è Tony</div>
   <h1>Grazie, risposta registrata.</h1>
   <p class="echo" id="echo"></p>
-  <p>Con le risposte preparo il primo report sul mercato dell'elettrico per i concessionari. Se vuoi riceverlo, e i contenuti successivi, conferma qui sotto.</p>
-  <button id="confirm" type="button">Sì, mandami il report</button>
+  <p>Con le risposte preparo il primo report sul mercato dell'elettrico per i concessionari. Se vuoi riceverlo, e i contenuti successivi, conferma il tuo indirizzo: ti porto su un modulo di Brevo, il servizio che uso per le email.</p>
+  <a class="btn" id="confirm" href="https://e0fe6896.sibforms.com/serve/MUIFAN2JsSINHJADQ4_uJLd0nEdxtCraaQOWVZoAVoWOWqhFSoYLNcmpmjBzZOK-jSnHQ0dJmCBqNS2ChYkCDEBCMiIFB92snURs8x0rN35FJWu52jnO0KRw39Np3ilD_yDxPyiAHzOXn_5_muHDnudDGv-n-StDuJpAlntesoECTrxDiGZ2CRgEzookxcqPpDxxBTLYL1xqVihO9Q==">Sì, mandami il report</a>
   <p class="note">Se non confermi, non ti scrivo più su questo tema.</p>
-  <div class="status" id="status" role="status" aria-live="polite"></div>
   <footer>
     SubitoElettrico.it è un progetto di Alex Pallotti, P.IVA 04153870128, Via Don Primo Mazzolari 118/B, Saronno. Tony è la voce editoriale del progetto.
     <a href="/privacy/">Informativa privacy</a>
   </footer>
 </main>
 <script>
-  // Da compilare con l'indirizzo del webhook di n8n prima della pubblicazione.
-  var WEBHOOK_URL = "https://REPLACE-WITH-N8N-WEBHOOK-URL";
-
   var answers = {
     "1": "non ho le risposte giuste da dare al cliente",
     "2": "non mi conviene, tra margine e provvigione",
     "3": "nessuna delle due"
   };
-  var params = new URLSearchParams(window.location.search);
-  var r = params.get("r");
-  var c = params.get("c");
-  var validR = answers.hasOwnProperty(r);
-  var validC = /^[A-Za-z0-9]{1,16}$/.test(c || "");
-
-  var echo = document.getElementById("echo");
-  if (validR) {
+  var r = new URLSearchParams(window.location.search).get("r");
+  if (answers.hasOwnProperty(r)) {
+    var echo = document.getElementById("echo");
     echo.textContent = "La tua risposta: " + answers[r] + ".";
     echo.style.display = "block";
   }
-
-  var btn = document.getElementById("confirm");
-  var status = document.getElementById("status");
-
-  function show(msg, ok) {
-    status.textContent = msg;
-    status.className = "status" + (ok ? " ok" : "");
-    status.style.display = "block";
-  }
-
-  btn.addEventListener("click", function () {
-    if (!validC) {
-      show("Questo link non è completo. Per ricevere il report rispondi alla mail di Tony con la parola sì.", false);
-      return;
-    }
-    btn.disabled = true;
-    fetch(WEBHOOK_URL, {
-      method: "POST",
-      headers: { "Content-Type": "text/plain;charset=UTF-8" },
-      body: JSON.stringify({ c: c, r: validR ? r : null })
-    }).then(function (res) {
-      if (!res.ok) { throw new Error("http " + res.status); }
-      show("Confermato. Ti scrivo quando il report è pronto. Puoi disiscriverti da qualsiasi mail.", true);
-    }).catch(function () {
-      btn.disabled = false;
-      show("Non sono riuscito a registrare la conferma. Riprova tra poco, oppure rispondi alla mail di Tony con la parola sì.", false);
-    });
-  });
 </script>
 </body>
 </html>
