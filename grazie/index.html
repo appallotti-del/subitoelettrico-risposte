@@ -4,53 +4,35 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Grazie, risposta registrata | SubitoElettrico.it</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root { --bg:#F5F2EC; --ink:#1B1B1B; --accent:#D76A03; --muted:#5b5750; --line:#dcd6c8; }
-  * { box-sizing: border-box; }
-  html, body { margin:0; background:var(--bg); color:var(--ink); }
-  body { font-family:'Inter',system-ui,sans-serif; font-size:17px; line-height:1.6; }
-  main { max-width:560px; margin:0 auto; padding:64px 20px 48px; }
-  .brand { font-size:14px; letter-spacing:.04em; color:var(--muted); margin-bottom:40px; }
-  .brand b { font-weight:500; color:var(--ink); }
-  h1 { font-family:'DM Serif Display',Georgia,serif; font-weight:400; font-size:38px; line-height:1.15; margin:0 0 20px; }
-  p { margin:0 0 18px; }
-  .echo { border-left:3px solid var(--accent); padding:2px 0 2px 14px; color:var(--muted); font-size:15px; margin:0 0 28px; display:none; }
-  .btn { display:inline-block; font:inherit; font-weight:500; background:var(--accent); color:#fff; text-decoration:none; padding:14px 22px; border-radius:6px; }
-  .btn:hover { filter:brightness(.94); }
-  .note { font-size:14px; color:var(--muted); margin-top:14px; }
-  footer { margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font-size:13px; color:var(--muted); }
-  footer a { color:var(--muted); }
-</style>
+<title>Grazie, risposta registrata | SubitoElettrico</title>
+<link rel="stylesheet" href="/assets/rs.css">
 </head>
 <body>
+<header><div><a href="https://subitoelettrico.it/"><img src="https://img.mailinblue.com/11774780/images/content_library/original/6ad637e9fd8ca38cd59e1672.png" alt="SubitoElettrico - per chi vende auto" width="231" height="56"></a></div></header>
 <main>
-  <div class="brand"><b>SubitoElettrico.it</b> - la voce editoriale è Tony</div>
-  <h1>Grazie, risposta registrata.</h1>
-  <p class="echo" id="echo"></p>
-  <p>Con le risposte preparo il primo report sul mercato dell'elettrico per i concessionari. Se vuoi riceverlo, e i contenuti successivi, conferma il tuo indirizzo: ti porto su un modulo di Brevo, il servizio che uso per le email.</p>
-  <a class="btn" id="confirm" href="https://e0fe6896.sibforms.com/serve/MUIFAN2JsSINHJADQ4_uJLd0nEdxtCraaQOWVZoAVoWOWqhFSoYLNcmpmjBzZOK-jSnHQ0dJmCBqNS2ChYkCDEBCMiIFB92snURs8x0rN35FJWu52jnO0KRw39Np3ilD_yDxPyiAHzOXn_5_muHDnudDGv-n-StDuJpAlntesoECTrxDiGZ2CRgEzookxcqPpDxxBTLYL1xqVihO9Q==">Sì, mandami il report</a>
-  <p class="note">Se non confermi, non ti scrivo più su questo tema.</p>
-  <footer>
-    SubitoElettrico.it è un progetto di Alex Pallotti, P.IVA 04153870128, Via Don Primo Mazzolari 118/B, Saronno. Tony è la voce editoriale del progetto.
-    <a href="/privacy/">Informativa privacy</a>
-  </footer>
+<div class="card">
+<img class="tony" src="https://img.mailinblue.com/11774780/images/content_library/original/6ad637e9164c970a1d77c5d3.png" alt="Tony, la voce di SubitoElettrico" width="150" height="148">
+<p class="eyebrow">Survey 01</p>
+<h1>Grazie, risposta registrata.</h1>
+<p class="echo" id="echo"></p>
+<p>Con le risposte preparo il primo report sul mercato dell'elettrico per i concessionari. Se vuoi riceverlo, e i contenuti successivi, conferma il tuo indirizzo: ti porto su un modulo di Brevo, il servizio che uso per le email.</p>
+<a class="btn" id="confirm" href="https://e0fe6896.sibforms.com/serve/MUIFAN2JsSINHJADQ4_uJLd0nEdxtCraaQOWVZoAVoWOWqhFSoYLNcmpmjBzZOK-jSnHQ0dJmCBqNS2ChYkCDEBCMiIFB92snURs8x0rN35FJWu52jnO0KRw39Np3ilD_yDxPyiAHzOXn_5_muHDnudDGv-n-StDuJpAlntesoECTrxDiGZ2CRgEzookxcqPpDxxBTLYL1xqVihO9Q==">Sì, mandami il report &rarr;</a>
+<p class="note">Se non confermi, non ti scrivo più su questo tema.</p>
+</div>
 </main>
+<footer><div>SubitoElettrico è un progetto di Alex Pallotti, P.IVA 04153870128, Via Don Primo Mazzolari 118/B, 21047 Saronno (VA). Tony è la voce editoriale del progetto. <a href="/privacy/">Informativa privacy</a></div></footer>
 <script>
-  var answers = {
-    "1": "non ho le risposte giuste da dare al cliente",
-    "2": "non mi conviene, tra margine e provvigione",
-    "3": "nessuna delle due"
-  };
-  var r = new URLSearchParams(window.location.search).get("r");
-  if (answers.hasOwnProperty(r)) {
-    var echo = document.getElementById("echo");
-    echo.textContent = "La tua risposta: " + answers[r] + ".";
-    echo.style.display = "block";
-  }
+var answers = {
+"1": "non ho le risposte giuste da dare al cliente",
+"2": "non mi conviene, tra margine e provvigione",
+"3": "nessuna delle due"
+};
+var r = new URLSearchParams(window.location.search).get("r");
+if (answers.hasOwnProperty(r)) {
+var echo = document.getElementById("echo");
+echo.textContent = "La tua risposta: " + answers[r] + ".";
+echo.style.display = "block";
+}
 </script>
 </body>
 </html>
