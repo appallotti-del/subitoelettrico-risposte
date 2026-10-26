@@ -15,22 +15,28 @@
 <p class="eyebrow">Survey 01</p>
 <h1>Grazie, risposta registrata.</h1>
 <p class="echo" id="echo"></p>
-<p>Con le risposte preparo il primo report sul mercato dell'elettrico per i concessionari. Se vuoi riceverlo, e i contenuti successivi, conferma il tuo indirizzo: ti porto su un modulo di Brevo, il servizio che uso per le email.</p>
+<p>Le risposte decideranno di cosa si occuperà il primo report sul mercato dell'elettrico per i concessionari.</p>
+<p>Se vuoi aggiungere una riga: in showroom, cosa vi manca di più per rispondere a questo cliente? Basta una mail, anche di due parole.</p>
+<a class="btn" id="free" href="mailto:tony@subitoelettrico.it?subject=Survey%2001">Rispondi a Tony &rarr;</a>
+<p>Se poi vuoi ricevere il report quando esce, puoi iscriverti qui. È facoltativo: ti porto su un modulo di Brevo, il servizio che uso per le email, e ti chiederò di confermare l'indirizzo.</p>
 <a class="btn" id="confirm" href="https://e0fe6896.sibforms.com/serve/MUIFAN2JsSINHJADQ4_uJLd0nEdxtCraaQOWVZoAVoWOWqhFSoYLNcmpmjBzZOK-jSnHQ0dJmCBqNS2ChYkCDEBCMiIFB92snURs8x0rN35FJWu52jnO0KRw39Np3ilD_yDxPyiAHzOXn_5_muHDnudDGv-n-StDuJpAlntesoECTrxDiGZ2CRgEzookxcqPpDxxBTLYL1xqVihO9Q==">Sì, mandami il report &rarr;</a>
-<p class="note">Se non confermi, non ti scrivo più su questo tema.</p>
+<p class="note">Se non ti iscrivi, non ti scrivo più su questo tema.</p>
 </div>
 </main>
-<footer><div>SubitoElettrico è un progetto di Alex Pallotti, P.IVA 04153870128, Via Don Primo Mazzolari 118/B, 21047 Saronno (VA). Tony è la voce editoriale del progetto. <a href="https://subitoelettrico.it/privacy/">Informativa privacy</a></div></footer>
+<footer><div>SubitoElettrico è un progetto di Alex Pallotti, P.IVA 04153870128, Via Don Primo Mazzolari 118/B, 21047 Saronno (VA). Tony è la voce editoriale del progetto. <a href="/privacy/">Informativa privacy</a></div></footer>
 <script>
 var answers = {
-"1": "non ho le risposte giuste da dare al cliente",
-"2": "non mi conviene, tra margine e provvigione",
-"3": "nessuna delle due"
+"1": "dove e come ricaricare (niente box, pochi punti, costo della ricarica)",
+"2": "prezzo e rata troppo alti rispetto al termico",
+"3": "timore di svalutazione e di valore dell'usato",
+"4": "autonomia e viaggi lunghi",
+"5": "incentivi poco chiari o non accessibili"
 };
-var r = new URLSearchParams(window.location.search).get("r");
+var p = new URLSearchParams(window.location.search);
+var r = p.get("r");
 if (answers.hasOwnProperty(r)) {
 var echo = document.getElementById("echo");
-echo.textContent = "La tua risposta: " + answers[r] + ".";
+echo.textContent = "Il motivo che senti più spesso: " + answers[r] + ".";
 echo.style.display = "block";
 }
 </script>
